@@ -33,7 +33,6 @@ public class Player : MonoBehaviour
         this.gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
-    // Update is called once per frame
     void Update()
     {
         _thrusting = (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow));

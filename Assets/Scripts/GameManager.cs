@@ -6,11 +6,12 @@ public class GameManager : MonoBehaviour
 {
     public Player player;
     public ParticleSystem explosion;
+    [SerializeReference]
+    private GameOverScreen gameOverScreen;
     public int lives = 3;
     public float respawnTime = 3.0f;
     public int score = 0;
-    private bool gameOver = false;
-
+    
     public void AsteroidDestroyed(Asteroid asteroid){
         this.explosion.transform.position = asteroid.transform.position;
         this.explosion.Play();
@@ -40,16 +41,14 @@ public class GameManager : MonoBehaviour
             Invoke(nameof(Respawn), this.respawnTime);
         }
     }
+    
     private void Respawn(){
         this.player.transform.position = Vector3.zero;
         this.player.gameObject.SetActive(true);
     }
 
     private void GameOver(){
-        gameOver = true;
-    }
-    public bool isGameOver(){
-        return gameOver;
+        gameOverScreen.DisplayGameOver();
     }
 
 }

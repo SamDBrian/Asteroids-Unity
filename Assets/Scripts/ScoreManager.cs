@@ -8,7 +8,6 @@ public class ScoreManager : MonoBehaviour
     public GameManager GameManager;
     public TMP_Text scoreCounter;
     public TMP_Text livesCounter;
-    public TMP_Text gameOver;
 
     void Start(){
         
@@ -19,8 +18,5 @@ public class ScoreManager : MonoBehaviour
     {
         scoreCounter.text = GameManager.score.ToString("0000");
         livesCounter.text = "Lives: " + GameManager.lives.ToString();
-        if (GameManager.isGameOver()){
-            gameOver.text = "GAME OVER";
-        }
     }
 }
