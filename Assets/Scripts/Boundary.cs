@@ -6,7 +6,7 @@ public class Boundary : MonoBehaviour
 {
 
     public Camera Cam;
-    
+    private GameObject ShipOrAsteroid;
     void Start(){
         var aspect = (float)Screen.width / Screen.height;
         var orthoSize = Cam.orthographicSize;
@@ -18,7 +18,7 @@ public class Boundary : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D collision){
-        GameObject ShipOrAsteroid = collision.gameObject;
+        ShipOrAsteroid = collision.gameObject;
         float EdgeOfScreenX = this.transform.localScale.x / 2;
         float EdgeOfScreenY = this.transform.localScale.y / 2;
 
