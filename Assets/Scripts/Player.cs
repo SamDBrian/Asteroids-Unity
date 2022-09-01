@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public Bullet bulletPrefab;
     public Missile missilePrefab;
     public float thrustSpeed = 1;
-    public float turnSpeed = 1;
+    public float turnSpeed = 225;
     public float railGunThrust = 5;
     public bool enableRailGunThrust = true;
     public int PDCBurstLength = 5;
@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public int maxMissiles = 1;
     private int missilesActive = 0;
     private bool launchMissileRight = true;
+    private float rotZ;
 
     private void Awake(){
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -39,14 +40,17 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)){
             _turnDirection = 1.0f;
+            rotZ += Time.deltaTime * _turnDirection * turnSpeed;
         }else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)){
             _turnDirection = -1.0f;
+            rotZ += Time.deltaTime * _turnDirection * turnSpeed;
         }else{
             _turnDirection = 0.0f;
         }
 
+        
+
         if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow)){
-            //transform.position *= -1.0f; //- remember this for wrapping   
             transform.RotateAround (transform.position, transform.forward, 180f);
         }
         
@@ -66,7 +70,7 @@ public class Player : MonoBehaviour
             _rigidbody.AddForce(this.transform.up * this.thrustSpeed);
         }
         if (_turnDirection != 0.0f){
-            _rigidbody.AddTorque(_turnDirection * this.turnSpeed);
+            transform.rotation = Quaternion.Euler(0, 0, rotZ);
         }
         
 

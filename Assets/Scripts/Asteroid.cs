@@ -12,6 +12,7 @@ public class Asteroid : MonoBehaviour
     private GameManager GameManager;
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidbody;
+    private bool hit = false;
 
     private void Awake(){
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -39,13 +40,17 @@ public class Asteroid : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bullet"){
+            hit = true;
+        }
+    }
+    private void FixedUpdate(){
+        if (hit){
             if((this.size * 0.5f) >= minSize){
                 CreateSplit();
                 CreateSplit();
             }
             FindObjectOfType<GameManager>().AsteroidDestroyed(this);
             Destroy(this.gameObject);
-
         }
     }
     private void CreateSplit(){
