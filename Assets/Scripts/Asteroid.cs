@@ -6,17 +6,19 @@ public class Asteroid : MonoBehaviour
 {
     public Sprite[] sprites;
     public float size = 1.0f;
-    public float minSize = 0.5f;
+    public float minSize = 0.0f;
     public float maxSize = 1.5f;
-    public float speed = 50.0f;
+    public float speed = 20.0f;
     private GameManager GameManager;
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidbody;
     private bool hit = false;
+    
 
     private void Awake(){
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        GameManager = FindObjectOfType<GameManager>();
     }
 
     // Start is called before the first frame update
@@ -33,10 +35,6 @@ public class Asteroid : MonoBehaviour
         _rigidbody.AddForce(direction * speed);
     }
 
-    public void SetGameManager(GameManager Manager){
-        GameManager = Manager;
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bullet"){
@@ -45,11 +43,13 @@ public class Asteroid : MonoBehaviour
     }
     private void FixedUpdate(){
         if (hit){
-            if((this.size * 0.5f) >= minSize){
+            if((this.size - 0.5f) >= minSize){
                 CreateSplit();
                 CreateSplit();
             }
-            FindObjectOfType<GameManager>().AsteroidDestroyed(this);
+            
+            GameManager.AsteroidDestroyed(this);
+            //FindObjectOfType<GameManager>().AsteroidDestroyed(this);
             Destroy(this.gameObject);
         }
     }
@@ -59,7 +59,8 @@ public class Asteroid : MonoBehaviour
 
         Asteroid half = Instantiate(this, position, this.transform.rotation);
         half.size = this.size * 0.5f;
-        half.SetTrajectory(-Random.insideUnitCircle.normalized * this.speed);
+        half.SetTrajectory(-Random.insideUnitCircle.normalized * (this.speed));
+        GameManager.IncrementAsteroidsAlive();
     }
 
 }

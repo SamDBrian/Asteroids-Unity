@@ -11,8 +11,18 @@ public class GameManager : MonoBehaviour
     public int lives = 3;
     public float respawnTime = 3.0f;
     public int score = 0;
+    [SerializeReference]
+    private int asteroidsAlive = 0;
+    [SerializeReference]
+    private int levelsCleared = 0;
     
-    public void AsteroidDestroyed(Asteroid asteroid){
+    // private void Update(){
+    //     if (asteroidsAlive == 0) {
+    //         IncrementLevelsCleared();
+    //     }
+    // }
+
+    public void AsteroidDestroyed(Asteroid asteroid){       
         this.explosion.transform.position = asteroid.transform.position;
         this.explosion.Play();
 
@@ -23,6 +33,8 @@ public class GameManager : MonoBehaviour
         } else {
             score += 25;
         }
+
+        asteroidsAlive--;
     }
 
     public void MissileDestroyed(Missile missile){
@@ -49,6 +61,23 @@ public class GameManager : MonoBehaviour
 
     private void GameOver(){
         gameOverScreen.DisplayGameOver();
+    }
+
+    public void LevelCleared(){
+        levelsCleared++;
+        Respawn();
+    }
+    public int GetLevelsCleared(){
+        return levelsCleared;
+    }
+
+    public void IncrementAsteroidsAlive(){
+        Debug.Log("I ran");
+        asteroidsAlive++;
+    }
+
+    public int GetAsteroidsAlive(){
+        return asteroidsAlive;
     }
 
 }

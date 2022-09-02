@@ -836,11 +836,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: 1196338966989302120, guid: 89add8f92bde82f43abea7ae072238ef, type: 3}
   EnableAsteroidSpawning: 1
-  spawnRate: 3
-  spawnAmount: 1
-  spawnDistance: 10
+  baseSpawnAmount: 4
+  spawnDistance: 5
   trajectoryVariance: 10
-  GameManager: {fileID: 1628803187}
+  unlimitedModeEnabled: 0
+  unlimitedModeSpawnRate: 3
+  unlimitedModeSpawnDistance: 10
+  gameManager: {fileID: 1628803187}
 --- !u!4 &557587560
 Transform:
   m_ObjectHideFlags: 0
@@ -854,7 +856,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &605663279
 GameObject:
@@ -1111,7 +1113,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1280, y: 720}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -6406,6 +6408,8 @@ MonoBehaviour:
   lives: 3
   respawnTime: 3
   score: 0
+  asteroidsAlive: 0
+  levelsCleared: 0
 --- !u!4 &1628803188
 Transform:
   m_ObjectHideFlags: 0
@@ -6419,7 +6423,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1993859459
 GameObject:
