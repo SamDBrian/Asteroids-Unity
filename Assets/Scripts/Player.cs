@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public int PDCBurstLength = 5;
 
     private Rigidbody2D _rigidbody;
+    private Animator _animator;
     private bool _thrusting;
     private float _turnDirection;
     public int maxMissiles = 1;
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour
 
     private void Awake(){
         _rigidbody = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
 
     private void OnEnable(){
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         _thrusting = (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow));
+        _animator.SetBool("Thrusting", _thrusting);
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)){
             _turnDirection = 1.0f;

@@ -315,6 +315,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3
+--- !u!95 &194416076
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194416065}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a9bfb1ec28cd70643a4a419ad2a61015, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &312125178
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +505,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 106, y: -30.6}
+  m_AnchoredPosition: {x: 106, y: -30.599976}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &335305750
@@ -835,13 +855,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: 1196338966989302120, guid: 89add8f92bde82f43abea7ae072238ef, type: 3}
-  EnableAsteroidSpawning: 1
+  enemyPrefab: {fileID: 1188546100186437392, guid: fcaf8195b1586a44d84ab059805a9014, type: 3}
   baseSpawnAmount: 4
   spawnDistance: 5
   trajectoryVariance: 10
   unlimitedModeEnabled: 0
   unlimitedModeSpawnRate: 3
   unlimitedModeSpawnDistance: 10
+  boundary: {fileID: 1476947038}
   gameManager: {fileID: 1628803187}
 --- !u!4 &557587560
 Transform:
@@ -6652,6 +6673,10 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 29edf485cffa5d84c95e77661f58e3d7, type: 3}
     - target: {fileID: 2598479961173521416, guid: 6517387c556afe94784c59f17c9b63e9, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2598479961173521416, guid: 6517387c556afe94784c59f17c9b63e9, type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7673622738905900445, guid: 6517387c556afe94784c59f17c9b63e9, type: 3}

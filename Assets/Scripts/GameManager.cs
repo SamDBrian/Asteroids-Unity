@@ -37,6 +37,11 @@ public class GameManager : MonoBehaviour
         asteroidsAlive--;
     }
 
+    public void EnemyDestroyed(Enemy enemy){
+        this.explosion.transform.position = enemy.transform.position;
+        this.explosion.Play();
+    }
+
     public void MissileDestroyed(Missile missile){
         this.explosion.transform.position = missile.transform.position;
         this.explosion.Play();
@@ -67,12 +72,13 @@ public class GameManager : MonoBehaviour
         levelsCleared++;
         Respawn();
     }
+
     public int GetLevelsCleared(){
         return levelsCleared;
     }
 
     public void IncrementAsteroidsAlive(){
-        Debug.Log("I ran");
+        //Debug.Log("I ran");
         asteroidsAlive++;
     }
 

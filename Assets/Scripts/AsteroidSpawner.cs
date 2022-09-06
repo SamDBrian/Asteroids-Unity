@@ -5,6 +5,7 @@ using UnityEngine;
 public class AsteroidSpawner : MonoBehaviour
 {
     public Asteroid asteroidPrefab;
+    public Enemy enemyPrefab;
     public int baseSpawnAmount = 4;
     public float spawnDistance = 15.0f;
     public float trajectoryVariance = 15.0f;
@@ -13,7 +14,10 @@ public class AsteroidSpawner : MonoBehaviour
     public float unlimitedModeSpawnDistance = 10.0f;
     private int spawnDirectionModifier = 1; // 1 for outward, -1 for inward
     private int spawnAmount;
-    public GameManager gameManager;
+    [SerializeField]
+    private Boundary boundary;
+    [SerializeField]
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +30,7 @@ public class AsteroidSpawner : MonoBehaviour
             spawnAmount = baseSpawnAmount;
             Spawn();
         }
+        InvokeRepeating(nameof(SpawnEnemy), 1f, 20f);
     }
 
     // Update is called once per frame
@@ -51,5 +56,27 @@ public class AsteroidSpawner : MonoBehaviour
             asteroid.SetTrajectory(rotation * spawnDirection * spawnDirectionModifier);
             gameManager.IncrementAsteroidsAlive();
         }
+    }
+
+    private void SpawnEnemy(){
+        float spawnX = 0f;
+        Vector2 spawnDirection = new Vector2();
+        if (Random.value < 0.5f){
+            //left
+            spawnX = -boundary.transform.localScale.x - 1f; 
+            spawnDirection = new Vector2(1.0f, 0.0f);
+        }else{
+            //right
+            spawnX = boundary.transform.localScale.x + 1f; 
+            spawnDirection = new Vector2(-1.0f, 0.0f);
+        }
+        float spawnYRange = boundary.transform.localScale.y - 1f;
+        float spawnY = Random.Range(-5f, 5f);
+
+        Vector3 spawnPoint = new Vector3(spawnX, spawnY);
+
+        Enemy enemy = Instantiate(this.enemyPrefab, spawnPoint, this.transform.rotation);
+        enemy.size = .5f;
+        enemy.SetTrajectory(spawnDirection);
     }
 }
