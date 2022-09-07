@@ -63,11 +63,11 @@ public class AsteroidSpawner : MonoBehaviour
         Vector2 spawnDirection = new Vector2();
         if (Random.value < 0.5f){
             //left
-            spawnX = -boundary.transform.localScale.x - 1f; 
+            spawnX = (-boundary.transform.localScale.x / 2) - 1f; 
             spawnDirection = new Vector2(1.0f, 0.0f);
         }else{
             //right
-            spawnX = boundary.transform.localScale.x + 1f; 
+            spawnX = (boundary.transform.localScale.x / 2) + 1f; 
             spawnDirection = new Vector2(-1.0f, 0.0f);
         }
         float spawnYRange = boundary.transform.localScale.y - 1f;

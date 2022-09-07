@@ -11,24 +11,23 @@ public class Enemy : MonoBehaviour
     private bool hit = false;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         GameManager = FindObjectOfType<GameManager>();
     }
 
     public void SetTrajectory(Vector2 direction){
-        //Debug.Log("_rigidbody" + _rigidbody.ToString());
         _rigidbody.AddForce(direction * speed);
-        // WHY ARE YOU NULLING?????
-        
     }   
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.gameObject.tag == "Bullet"){
+            hit = true;
+        }
     }
+    
     private void FixedUpdate(){
        if (hit){
         GameManager.EnemyDestroyed(this);
