@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeReference]
     private int asteroidsAlive = 0;
     [SerializeReference]
+    private int enemiesAlive = 0;
+    [SerializeReference]
     private int levelsCleared = 0;
     
     // private void Update(){
@@ -40,6 +42,8 @@ public class GameManager : MonoBehaviour
     public void EnemyDestroyed(Enemy enemy){
         this.explosion.transform.position = enemy.transform.position;
         this.explosion.Play();
+        score += 100;
+        enemiesAlive--;
     }
 
     public void MissileDestroyed(Missile missile){
@@ -84,6 +88,14 @@ public class GameManager : MonoBehaviour
 
     public int GetAsteroidsAlive(){
         return asteroidsAlive;
+    }
+    public void IncrementEnemiesAlive(){
+        //Debug.Log("I ran");
+        enemiesAlive++;
+    }
+
+    public int GetEnemiesAlive(){
+        return enemiesAlive;
     }
 
 }

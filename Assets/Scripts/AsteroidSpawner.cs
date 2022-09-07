@@ -9,6 +9,8 @@ public class AsteroidSpawner : MonoBehaviour
     public int baseSpawnAmount = 4;
     public float spawnDistance = 15.0f;
     public float trajectoryVariance = 15.0f;
+    public float initialEnemySpawnDelay = 5f;
+    public float enemySpawnDelay = 20f;
     public bool unlimitedModeEnabled = false;
     public float unlimitedModeSpawnRate = 3.0f;
     public float unlimitedModeSpawnDistance = 10.0f;
@@ -30,13 +32,13 @@ public class AsteroidSpawner : MonoBehaviour
             spawnAmount = baseSpawnAmount;
             Spawn();
         }
-        InvokeRepeating(nameof(SpawnEnemy), 1f, 20f);
+        InvokeRepeating(nameof(SpawnEnemy), initialEnemySpawnDelay, enemySpawnDelay);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!unlimitedModeEnabled && gameManager.GetAsteroidsAlive() == 0){
+        if (!unlimitedModeEnabled && gameManager.GetAsteroidsAlive() == 0 && gameManager.GetEnemiesAlive() == 0){
             gameManager.LevelCleared();
             spawnAmount = baseSpawnAmount + gameManager.GetLevelsCleared();
             Spawn();
@@ -70,13 +72,14 @@ public class AsteroidSpawner : MonoBehaviour
             spawnX = (boundary.transform.localScale.x / 2) + 1f; 
             spawnDirection = new Vector2(-1.0f, 0.0f);
         }
-        float spawnYRange = boundary.transform.localScale.y - 1f;
-        float spawnY = Random.Range(-5f, 5f);
+        float spawnYRange = (boundary.transform.localScale.y / 2) - 1f;
+        float spawnY = Random.Range(-spawnYRange, spawnYRange);
 
         Vector3 spawnPoint = new Vector3(spawnX, spawnY);
 
         Enemy enemy = Instantiate(this.enemyPrefab, spawnPoint, this.transform.rotation);
         enemy.size = .5f;
         enemy.SetTrajectory(spawnDirection);
+        gameManager.IncrementEnemiesAlive();
     }
 }

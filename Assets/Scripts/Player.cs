@@ -120,7 +120,7 @@ public class Player : MonoBehaviour
 
 
     private void OnCollisionEnter2D(Collision2D collision){
-        if (collision.gameObject.tag == "Asteroid"){
+        if (collision.gameObject.tag == "Asteroid" || collision.gameObject.tag == "EnemyBullet" || collision.gameObject.tag == "Enemy"){
             _rigidbody.velocity = Vector3.zero; //zero out player movement
             _rigidbody.angularVelocity = 0.0f; 
 
