@@ -11,6 +11,7 @@ TagManager:
   - Horizontal Boundary
   - Missile
   - Enemy
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Boundary
   - Ignore Collisions (Player)
   - Enemy
-  - 
+  - Enemy Bullet
   - 
   - 
   - 

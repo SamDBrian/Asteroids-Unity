@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour
     private void Manuever(){
         Vector3 newCourse = Random.insideUnitCircle.normalized;
         _rigidbody.AddForce(newCourse * speed);
+        // known bug, manuevers can kill momentum. 
     }
 
     private void Attack(){

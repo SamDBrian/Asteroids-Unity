@@ -859,6 +859,8 @@ MonoBehaviour:
   baseSpawnAmount: 4
   spawnDistance: 5
   trajectoryVariance: 10
+  initialEnemySpawnDelay: 5
+  enemySpawnDelay: 20
   unlimitedModeEnabled: 0
   unlimitedModeSpawnRate: 3
   unlimitedModeSpawnDistance: 10
@@ -6430,6 +6432,7 @@ MonoBehaviour:
   respawnTime: 3
   score: 0
   asteroidsAlive: 0
+  enemiesAlive: 0
   levelsCleared: 0
 --- !u!4 &1628803188
 Transform:
