@@ -49,12 +49,6 @@ public class Player : MonoBehaviour
         }else{
             _turnDirection = 0.0f;
         }
-
-        
-
-        if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow)){
-            transform.RotateAround (transform.position, transform.forward, 180f);
-        }
         
         if (Input.GetKeyDown(KeyCode.Space)){
             FireRailgun();
@@ -87,12 +81,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    // private void OnTriggerEnter2D(Collider2D collision){
-    //     if (collision.gameObject.tag == "Asteroid"){
-    //         FirePDC(collision);
-    //     }
-    // }
-
     private void FireMissile(Vector3 target) {
         Debug.Log("Missile away! Target: " + target);
         missilesActive++;
@@ -121,14 +109,23 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision){
         if (collision.gameObject.tag == "Asteroid" || collision.gameObject.tag == "EnemyBullet" || collision.gameObject.tag == "Enemy"){
-            _rigidbody.velocity = Vector3.zero; //zero out player movement
-            _rigidbody.angularVelocity = 0.0f; 
+            
+            KillMomentum(); 
 
             this.gameObject.SetActive(false);
 
             FindObjectOfType<GameManager>().PlayerDied();
         }
+    }
 
+    public void KillMomentum(){
+        _rigidbody.velocity = Vector3.zero; //zero out player movement
+        _rigidbody.angularVelocity = 0.0f; 
+    }
+
+    public void ResetRotation(){
+        transform.rotation = new Quaternion(0,0,0,0);
+        rotZ = 0f;
     }
 
 }

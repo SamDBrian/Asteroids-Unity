@@ -32,7 +32,6 @@ public class AsteroidSpawner : MonoBehaviour
             spawnAmount = baseSpawnAmount;
             Spawn();
         }
-        InvokeRepeating(nameof(SpawnEnemy), initialEnemySpawnDelay, enemySpawnDelay);
     }
 
     // Update is called once per frame
@@ -45,7 +44,12 @@ public class AsteroidSpawner : MonoBehaviour
         }
     }
 
-    private void Spawn() {
+    public void EnableEnemySpawning(){
+        InvokeRepeating(nameof(SpawnEnemy), initialEnemySpawnDelay, enemySpawnDelay);
+
+    }
+
+    public void Spawn() {
         for (int i = 0; i < spawnAmount; i++){
             Vector3 spawnDirection = Random.insideUnitCircle.normalized * spawnDistance; //Random position on edge of spawn radius
             Vector3 spawnPoint = this.transform.position + spawnDirection;

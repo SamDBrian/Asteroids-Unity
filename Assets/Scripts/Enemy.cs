@@ -13,7 +13,6 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private bool hit = false;
 
-    // Start is called before the first frame update
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();

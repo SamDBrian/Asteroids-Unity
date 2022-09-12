@@ -53,6 +53,16 @@ public class Asteroid : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    private void Update() {
+        if (Mathf.Abs(transform.position.y) > 7) {
+            EmergencyWrapVertical();
+        } 
+        if (Mathf.Abs(transform.position.x) > 11) {
+            EmergencyWrapHorizontal();
+        } 
+    }
+
     private void CreateSplit(){
         Vector2 position = this.transform.position;
         position += Random.insideUnitCircle * 0.5f;
@@ -61,6 +71,13 @@ public class Asteroid : MonoBehaviour
         half.size = this.size * 0.5f;
         half.SetTrajectory(-Random.insideUnitCircle.normalized * (this.speed));
         GameManager.IncrementAsteroidsAlive();
+    }
+
+    private void EmergencyWrapVertical(){
+        transform.position = new Vector3(transform.position.x, -transform.position.y, transform.position.z);
+    }
+    private void EmergencyWrapHorizontal(){
+        transform.position = new Vector3(-transform.position.x, transform.position.y, transform.position.z);
     }
 
 }

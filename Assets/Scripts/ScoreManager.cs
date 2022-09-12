@@ -9,8 +9,8 @@ public class ScoreManager : MonoBehaviour
     public TMP_Text scoreCounter;
     public TMP_Text livesCounter;
 
-    void Start(){
-        
+    public void DisplayScoreScreen(){
+        gameObject.SetActive(true);
     }
 
     // Update is called once per frame

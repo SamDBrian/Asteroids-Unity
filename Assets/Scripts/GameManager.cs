@@ -8,6 +8,12 @@ public class GameManager : MonoBehaviour
     public ParticleSystem explosion;
     [SerializeReference]
     private GameOverScreen gameOverScreen;
+    [SerializeReference]
+    private StartScreen startMenu;
+    [SerializeReference]
+    private ScoreManager scoreUI;
+    [SerializeReference]
+    private AsteroidSpawner AsteroidSpawner;
     public int lives = 3;
     public float respawnTime = 3.0f;
     public int score = 0;
@@ -17,10 +23,15 @@ public class GameManager : MonoBehaviour
     private int enemiesAlive = 0;
     [SerializeReference]
     private int levelsCleared = 0;
-    
-    // private void Update(){
-    //     if (asteroidsAlive == 0) {
-    //         IncrementLevelsCleared();
+
+    void Awake(){
+        this.player.gameObject.SetActive(false);
+        startMenu.DisplayStartScreen();
+    }
+
+    // void Update(){
+    //     if (asteroidsAlive == 0 && enemiesAlive == 0) {
+    //         LevelCleared();
     //     }
     // }
 
@@ -63,8 +74,10 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    private void Respawn(){
+    public void Respawn(){
         this.player.transform.position = Vector3.zero;
+        this.player.KillMomentum();
+        this.player.ResetRotation();
         this.player.gameObject.SetActive(true);
     }
 
@@ -74,7 +87,8 @@ public class GameManager : MonoBehaviour
 
     public void LevelCleared(){
         levelsCleared++;
-        Respawn();
+        this.player.gameObject.SetActive(false);
+        Invoke(nameof(Respawn), .5f);
     }
 
     public int GetLevelsCleared(){
@@ -96,6 +110,13 @@ public class GameManager : MonoBehaviour
 
     public int GetEnemiesAlive(){
         return enemiesAlive;
+    }
+
+    public void DisplayUI(){
+        scoreUI.DisplayScoreScreen();
+    }
+    public void ActivateEnemySpawning(){
+        AsteroidSpawner.EnableEnemySpawning();
     }
 
 }
