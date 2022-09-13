@@ -59,6 +59,11 @@ public class Missile : MonoBehaviour
         }
 
         if (targetLocked) {
+            //turn to face target
+            Vector2 lookDir = target - _rigidbody.position;
+            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+            _rigidbody.rotation = angle;
+            //end
             transform.position = Vector3.MoveTowards(transform.position, target, (speed * Time.deltaTime));
             Vector2 pos = transform.position;
             if (pos == target) {
@@ -100,5 +105,6 @@ public class Missile : MonoBehaviour
             player.recordMissileDestroyed();
             Destroy(this.gameObject);
     }
+
     
 }

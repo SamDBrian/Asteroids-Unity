@@ -55,10 +55,10 @@ public class Asteroid : MonoBehaviour
     }
 
     private void Update() {
-        if (Mathf.Abs(transform.position.y) > 7) {
+        if (Mathf.Abs(transform.position.y) > (GameManager.boundary.transform.localScale.y / 2) + 1.5f) {
             EmergencyWrapVertical();
         } 
-        if (Mathf.Abs(transform.position.x) > 11) {
+        if (Mathf.Abs(transform.position.x) > (GameManager.boundary.transform.localScale.x / 2) + 1.5f) {
             EmergencyWrapHorizontal();
         } 
     }

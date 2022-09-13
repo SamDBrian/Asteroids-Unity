@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     private ScoreManager scoreUI;
     [SerializeReference]
     private AsteroidSpawner AsteroidSpawner;
+    public Boundary boundary;
     public int lives = 3;
     public float respawnTime = 3.0f;
     public int score = 0;
