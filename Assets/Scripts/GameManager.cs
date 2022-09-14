@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeReference]
     private ScoreManager scoreUI;
     [SerializeReference]
+    private ControlsScreen controlScreen;
+    [SerializeReference]
     private AsteroidSpawner AsteroidSpawner;
     public Boundary boundary;
     public int lives = 3;
@@ -111,6 +113,14 @@ public class GameManager : MonoBehaviour
 
     public int GetEnemiesAlive(){
         return enemiesAlive;
+    }
+
+    public void DisplayStartScreen(){
+        startMenu.DisplayStartScreen();
+    }
+
+    public void DisplayControlsScreen(){
+        controlScreen.DisplayControlsScreen();
     }
 
     public void DisplayUI(){

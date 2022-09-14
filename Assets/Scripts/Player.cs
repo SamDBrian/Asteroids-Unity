@@ -37,13 +37,13 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        _thrusting = (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow));
+        _thrusting = (Input.GetKey(KeyCode.W));
         _animator.SetBool("Thrusting", _thrusting);
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)){
+        if (Input.GetKey(KeyCode.A)){
             _turnDirection = 1.0f;
             rotZ += Time.deltaTime * _turnDirection * turnSpeed;
-        }else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)){
+        }else if (Input.GetKey(KeyCode.D)){
             _turnDirection = -1.0f;
             rotZ += Time.deltaTime * _turnDirection * turnSpeed;
         }else{

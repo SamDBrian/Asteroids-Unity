@@ -13,6 +13,11 @@ public class StartScreen : MonoBehaviour
         gameObject.SetActive(true);
     }
 
+    public void DisplayControlsScreen(){
+        GameManager.DisplayControlsScreen();
+        TearDownStartScreen();
+    }
+
     public void TearDownStartScreen(){
         gameObject.SetActive(false);
     }
@@ -23,6 +28,7 @@ public class StartScreen : MonoBehaviour
         GameManager.ActivateEnemySpawning();
         TearDownStartScreen();
     }
+
     public void EndGameButton(){
         // Comment Me before building:
         UnityEditor.EditorApplication.isPlaying = false;

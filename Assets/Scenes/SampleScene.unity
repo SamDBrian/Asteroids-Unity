@@ -7221,6 +7221,7 @@ MonoBehaviour:
   startMenu: {fileID: 1181307593}
   scoreUI: {fileID: 713038687}
   AsteroidSpawner: {fileID: 557587559}
+  boundary: {fileID: 1476947038}
   lives: 3
   respawnTime: 3
   score: 0
