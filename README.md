@@ -1,4 +1,4 @@
-# Asteroids-Unity
+# Disasteroids
 This is a clone of Asteroids using Unity, based on a tutorial by Zigurous (https://www.youtube.com/watch?v=cIeWhztKyAg).
 
 I have been making substantial alterations to Zigurous's original program to teach myself Unity.
