@@ -15,3 +15,7 @@ Changes so far:
 - Adjusted the spawn system to better match the original Asteroids
 --- Asteroids spawn moving away from the player.
 --- Game now spawns 4 large asteroids at the start and adds 1 large asteroid every time the player clears a level.
+
+All sprites were made by me based on the sprites from Asteroids.
+
+Font is Hyperspace.
