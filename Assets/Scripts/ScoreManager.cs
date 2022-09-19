@@ -16,7 +16,7 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreCounter.text = GameManager.score.ToString("0000");
+        scoreCounter.text = "Score:" + GameManager.score.ToString("0000");
         livesCounter.text = "Lives: " + GameManager.lives.ToString();
     }
 }

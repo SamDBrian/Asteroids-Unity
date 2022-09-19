@@ -26,10 +26,12 @@ public class GameManager : MonoBehaviour
     private int enemiesAlive = 0;
     [SerializeReference]
     private int levelsCleared = 0;
+    private AudioSource _audioSource;
 
     void Awake(){
         this.player.gameObject.SetActive(false);
         startMenu.DisplayStartScreen();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // void Update(){
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     public void AsteroidDestroyed(Asteroid asteroid){       
         this.explosion.transform.position = asteroid.transform.position;
+        _audioSource.Play();
         this.explosion.Play();
 
         if (asteroid.size < .75f) {
@@ -58,6 +61,7 @@ public class GameManager : MonoBehaviour
         this.explosion.Play();
         score += 100;
         enemiesAlive--;
+        
     }
 
     public void MissileDestroyed(Missile missile){
@@ -91,7 +95,19 @@ public class GameManager : MonoBehaviour
     public void LevelCleared(){
         levelsCleared++;
         this.player.gameObject.SetActive(false);
+        KillOrphans();
         Invoke(nameof(Respawn), .5f);
+    }
+
+    private void KillOrphans(){
+        Missile[] orphanMissiles = FindObjectsOfType<Missile>();
+        for (int i = 0; i < orphanMissiles.Length; i++ ){
+            Destroy(orphanMissiles[i].gameObject);
+        }
+        Bullet[] orphanBullets = FindObjectsOfType<Bullet>();
+        for (int i = 0; i < orphanBullets.Length; i++ ){
+            Destroy(orphanBullets[i].gameObject);
+        }
     }
 
     public int GetLevelsCleared(){
