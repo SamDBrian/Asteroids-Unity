@@ -9,14 +9,16 @@ public class Enemy : MonoBehaviour
     public float speed = 20.0f;
     public float firstShotDelay = 2f;
     public float fireRate = 2f;
-    private GameManager GameManager;
+    private GameManager gameManager;
     private Rigidbody2D _rigidbody;
+    private AudioManager audioManager;
     private bool hit = false;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        GameManager = FindObjectOfType<GameManager>();
+        gameManager = FindObjectOfType<GameManager>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     private void Start() {
@@ -38,7 +40,7 @@ public class Enemy : MonoBehaviour
     private void Manuever(){
         Vector3 newCourse = Random.insideUnitCircle.normalized;
         _rigidbody.AddForce(newCourse * speed);
-        // known bug, manuevers can kill momentum. 
+        // known feature, manuevers can kill momentum. 
     }
 
     private void Attack(){
@@ -49,7 +51,7 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate(){
        if (hit){
-            GameManager.EnemyDestroyed(this);
+            gameManager.EnemyDestroyed(this);
             Destroy(this.gameObject);
        }
     }

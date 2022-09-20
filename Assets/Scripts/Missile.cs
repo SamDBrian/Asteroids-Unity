@@ -17,11 +17,14 @@ public class Missile : MonoBehaviour
     private Vector3 startingPoint;
     private Quaternion _lookRotation;
     private Vector2 _direction;
+    private AudioManager _audioManager;
     private bool targetLocked = false;
     private bool launchMissileRight;
 
     private void Awake(){
         _rigidbody = GetComponent<Rigidbody2D>();
+        _audioManager = FindObjectOfType<AudioManager>();
+        Debug.Log("audio manager: " + _audioManager);
     }
 
     public void Launch(Vector3 direction, Player player, bool launchMissileRight){
@@ -39,16 +42,15 @@ public class Missile : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Missiles die if hit before they reach their destination
         FindObjectOfType<GameManager>().MissileDestroyed(this);
+        _audioManager.Play("missileFailed");
         player.recordMissileDestroyed();
         Destroy(this.gameObject);
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         
@@ -67,6 +69,8 @@ public class Missile : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target, (speed * Time.deltaTime));
             Vector2 pos = transform.position;
             if (pos == target) {
+                
+                _audioManager.Play("burst");
                 Detonate();
             }        
         }

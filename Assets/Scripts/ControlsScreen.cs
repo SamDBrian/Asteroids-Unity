@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class ControlsScreen : MonoBehaviour
 {
-    // Start is called before the first frame update
     public GameManager GameManager;
-    // Start is called before the first frame update
+
     public void DisplayControlsScreen(){
         gameObject.SetActive(true);
     }
@@ -22,6 +21,7 @@ public class ControlsScreen : MonoBehaviour
     }
 
     public void MainMenuButton(){
+        //GameManager.audioManager.Play("ButtonPressed");
         GameManager.DisplayStartScreen();
         TearDownControlsScreen();
     }

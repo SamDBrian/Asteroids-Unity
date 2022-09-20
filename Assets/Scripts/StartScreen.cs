@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class StartScreen : MonoBehaviour
 {
     public GameManager GameManager;
-    // Start is called before the first frame update
+
     public void DisplayStartScreen(){
         gameObject.SetActive(true);
     }
@@ -31,8 +31,9 @@ public class StartScreen : MonoBehaviour
 
     public void EndGameButton(){
         // Comment Me before building:
-        UnityEditor.EditorApplication.isPlaying = false;
+        //GameManager.audioManager.Play("ButtonPressed");
+        //UnityEditor.EditorApplication.isPlaying = false;
         // Uncomment Me before build:
-        //Application.Quit();
+        Application.Quit();
     }
 }

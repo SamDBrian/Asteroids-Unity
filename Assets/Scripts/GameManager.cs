@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeReference]
     private AsteroidSpawner AsteroidSpawner;
     public Boundary boundary;
+    public AudioManager audioManager;
     public int lives = 3;
     public float respawnTime = 3.0f;
     public int score = 0;
@@ -34,15 +35,9 @@ public class GameManager : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 
-    // void Update(){
-    //     if (asteroidsAlive == 0 && enemiesAlive == 0) {
-    //         LevelCleared();
-    //     }
-    // }
-
     public void AsteroidDestroyed(Asteroid asteroid){       
         this.explosion.transform.position = asteroid.transform.position;
-        _audioSource.Play();
+        audioManager.Play("objectDestroyed");
         this.explosion.Play();
 
         if (asteroid.size < .75f) {
@@ -59,6 +54,7 @@ public class GameManager : MonoBehaviour
     public void EnemyDestroyed(Enemy enemy){
         this.explosion.transform.position = enemy.transform.position;
         this.explosion.Play();
+        audioManager.Play("objectDestroyed");
         score += 100;
         enemiesAlive--;
         
@@ -72,6 +68,7 @@ public class GameManager : MonoBehaviour
     public void PlayerDied(){
         this.explosion.transform.position = this.player.transform.position;
         this.explosion.Play();
+        audioManager.Play("playerDied");
         this.lives--;
 
         if (this.lives <= 0){
@@ -108,6 +105,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < orphanBullets.Length; i++ ){
             Destroy(orphanBullets[i].gameObject);
         }
+        player.resetMissilesActive();
     }
 
     public int GetLevelsCleared(){
@@ -115,7 +113,6 @@ public class GameManager : MonoBehaviour
     }
 
     public void IncrementAsteroidsAlive(){
-        //Debug.Log("I ran");
         asteroidsAlive++;
     }
 
@@ -123,7 +120,6 @@ public class GameManager : MonoBehaviour
         return asteroidsAlive;
     }
     public void IncrementEnemiesAlive(){
-        //Debug.Log("I ran");
         enemiesAlive++;
     }
 

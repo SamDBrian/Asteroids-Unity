@@ -21,7 +21,6 @@ public class Asteroid : MonoBehaviour
         GameManager = FindObjectOfType<GameManager>();
     }
 
-    // Start is called before the first frame update
     private void Start()
     {
         _spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
@@ -40,6 +39,9 @@ public class Asteroid : MonoBehaviour
         if (collision.gameObject.tag == "Bullet"){
             hit = true;
         }
+        if (collision.gameObject.tag == "EnemyBullet"){
+            GameManager.audioManager.Play("bonk");
+        }
     }
     private void FixedUpdate(){
         if (hit){
@@ -49,7 +51,6 @@ public class Asteroid : MonoBehaviour
             }
             
             GameManager.AsteroidDestroyed(this);
-            //FindObjectOfType<GameManager>().AsteroidDestroyed(this);
             Destroy(this.gameObject);
         }
     }
