@@ -19,3 +19,5 @@ Changes so far:
 All sprites were made by me based on the sprites from Asteroids.
 
 Font is Hyperspace.
+
+Sound Effects by mattflat, who can be found at: https://mattflat.itch.io/.
