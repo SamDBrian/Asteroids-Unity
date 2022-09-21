@@ -1276,7 +1276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 209}
+  m_AnchoredPosition: {x: 0, y: 212}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &507144666
@@ -7902,7 +7902,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 60}
+  m_AnchoredPosition: {x: 0, y: 72}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1321866806
@@ -7928,19 +7928,23 @@ MonoBehaviour:
   m_text: 'Art & Programming by Sam Brian
 
 
-    Audio Assets by mattflat (https://mattflat.itch.io/)
-    and are used under a Creative Commons BY-ND 3.0 Licence.
+    built using Unity
 
 
-    Font used is Hyperspace
-    by Pixel Sagas.
+    Audio Assets
+    by mattflat (https://mattflat.itch.io/) and are used under a Creative Commons
+    BY-ND 3.0 Licence
 
 
-    Inspired by Asteroids, which is owned by Atari Inc.
+    Font used is Hyperspace by Pixel Sagas
 
 
-    Additional
-    Thanks to Zigurous & Brackeys for their helpful tutorials.
+    Inspired
+    by Asteroids. Asteroids is owned by Atari Inc.
+
+
+    Additional Thanks to Zigurous
+    & Brackeys for their helpful tutorials.
 
 
 '
@@ -7970,8 +7974,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 22
+  m_fontSizeBase: 22
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8006,7 +8010,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -440.32568, y: -63.100403, z: -457.72412, w: -236.47922}
+  m_margin: {x: -440.32568, y: -63.100403, z: -457.72412, w: -254.94763}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -8192,7 +8196,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.8985, y: -190}
+  m_AnchoredPosition: {x: 1.8985, y: -199}
   m_SizeDelta: {x: 239.739, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1418850440
