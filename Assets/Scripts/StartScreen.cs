@@ -18,6 +18,11 @@ public class StartScreen : MonoBehaviour
         TearDownStartScreen();
     }
 
+    public void DisplayCreditsScreen(){
+        GameManager.DisplayCreditsScreen();
+        TearDownStartScreen();
+    }
+
     public void TearDownStartScreen(){
         gameObject.SetActive(false);
     }

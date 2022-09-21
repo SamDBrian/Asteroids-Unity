@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
     private bool launchMissileRight = true;
     private float rotZ;
     private bool startAudioLoop = true;
-    private bool invincible = false;
     private bool alive;
     
     private void Awake(){
@@ -35,7 +34,6 @@ public class Player : MonoBehaviour
     private void OnEnable(){
         alive = true;
         this.gameObject.layer = LayerMask.NameToLayer("Ignore Collisions (Player)");
-        invincible = true;
         _spriteRenderer.color = new Color(.5f,.5f,.5f,1f);
         this.Invoke(nameof(TurnOnCollision), 2.0f);
     }
@@ -43,7 +41,6 @@ public class Player : MonoBehaviour
     private void TurnOnCollision() {
         this.gameObject.layer = LayerMask.NameToLayer("Player");
         _spriteRenderer.color = new Color(1,1,1,1);
-        invincible = false;
     }
 
 

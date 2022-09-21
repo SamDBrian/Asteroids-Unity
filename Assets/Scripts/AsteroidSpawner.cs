@@ -11,7 +11,6 @@ public class AsteroidSpawner : MonoBehaviour
     public float trajectoryVariance = 15.0f;
     public float initialEnemySpawnDelay = 5f;
     public float enemySpawnDelay = 20f;
-    public bool unlimitedModeEnabled = false;
     public float unlimitedModeSpawnRate = 3.0f;
     public float unlimitedModeSpawnDistance = 10.0f;
     private int spawnDirectionModifier = 1; // 1 for outward, -1 for inward
@@ -23,21 +22,16 @@ public class AsteroidSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (unlimitedModeEnabled){
-            spawnAmount = 1;
-            InvokeRepeating(nameof(Spawn), this.unlimitedModeSpawnRate, this.unlimitedModeSpawnRate);
-            spawnDistance = unlimitedModeSpawnDistance;
-            spawnDirectionModifier = -1;
-        } else {
-            spawnAmount = baseSpawnAmount;
-            Spawn();
-        }
+        
+        spawnAmount = baseSpawnAmount;
+        Spawn();
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!unlimitedModeEnabled && gameManager.GetAsteroidsAlive() == 0 && gameManager.GetEnemiesAlive() == 0){
+        if (gameManager.GetAsteroidsAlive() == 0 && gameManager.GetEnemiesAlive() == 0){
             gameManager.LevelCleared();
             spawnAmount = baseSpawnAmount + gameManager.GetLevelsCleared();
             Spawn();

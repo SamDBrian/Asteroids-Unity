@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     [SerializeReference]
     private ControlsScreen controlScreen;
     [SerializeReference]
+    private CreditsScreen creditsScreen;
+    [SerializeReference]
     private AsteroidSpawner AsteroidSpawner;
     public Boundary boundary;
     public AudioManager audioManager;
@@ -133,6 +135,10 @@ public class GameManager : MonoBehaviour
 
     public void DisplayControlsScreen(){
         controlScreen.DisplayControlsScreen();
+    }
+
+    public void DisplayCreditsScreen(){
+        creditsScreen.DisplayCreditsScreen();
     }
 
     public void DisplayUI(){
