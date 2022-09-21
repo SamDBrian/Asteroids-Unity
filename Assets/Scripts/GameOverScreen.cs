@@ -19,7 +19,7 @@ public class GameOverScreen : MonoBehaviour
 
     public void NewGameButton(){
         GameManager.audioManager.Play("ButtonPressed");
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Disasteroids");
     }
     public void EndGameButton(){
         // Comment Me before building:
