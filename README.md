@@ -1,6 +1,8 @@
 # Disasteroids
 This is a clone of Asteroids using Unity. 
 
+Playable via: https://rvengefulobster.itch.io/disasteroids
+
 Based on a heavily modified version of a tutorial by Zigurous (https://www.youtube.com/watch?v=cIeWhztKyAg). I have made substantial alterations to Zigurous's original code base to teach myself Unity.
 
 Changes so far:
