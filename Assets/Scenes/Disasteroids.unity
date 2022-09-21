@@ -9670,6 +9670,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8590483171339545330, guid: 6517387c556afe94784c59f17c9b63e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590483171339545330, guid: 6517387c556afe94784c59f17c9b63e9, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}

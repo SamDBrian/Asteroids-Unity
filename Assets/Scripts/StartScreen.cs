@@ -28,6 +28,7 @@ public class StartScreen : MonoBehaviour
     }
 
     public void NewGameButton(){
+        GameManager.player.gameObject.SetActive(true);
         GameManager.Respawn();
         GameManager.DisplayUI();
         GameManager.ActivateEnemySpawning();

@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     private AudioSource _audioSource;
 
     void Awake(){
-        this.player.gameObject.SetActive(false);
+        //this.player.gameObject.SetActive(false);
         startMenu.DisplayStartScreen();
         _audioSource = GetComponent<AudioSource>();
     }
