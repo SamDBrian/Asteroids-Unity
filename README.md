@@ -1,5 +1,5 @@
 # Disasteroids
-This is a clone of Asteroids using Unity. 
+This is an "Asteroids" clone made using Unity. 
 
 Playable via: https://rvengefulobster.itch.io/disasteroids
 
